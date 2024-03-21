@@ -43,56 +43,11 @@ def reply_whatsapp():
         to=sender_number
     )
 
-    '''if state == "waiting_for_url":
-        url = message_body.strip()
-        user_state[sender_number] = "processing_url"
-        greeting = ["hi", "hello", "hey"]
-        if url.lower() in greeting:
-            resp = MessagingResponse()
-            resp.message("Welcome to ARC")
+  
+         
+          
 
-        elif url.startswith("http"):
-            server_url = "http://localhost:5000"
-            response = requests.get(f"{server_url}/predict?url={url}")
-
-            score = response.json()['score']
-
-            if score < 50:
-                formatted_response = f"The score for {url} is *_{score}_*. This website is safe to use ✅."
-            elif score > 50 and score < 70:
-                formatted_response = f"The score for {url} is {score}. Please note that this website may be harmful ⚠️."
-            elif score > 70:
-                formatted_response = f"The score for ~{url}~ is *_{score}_*. Please note that this website is not recommended 🚫."
-
-            message = client.messages.create(
-                body=formatted_response,
-                from_=twilio_phone_number,
-                to=sender_number
-            )
-
-        else:
-            resp = MessagingResponse()
-            resp.message("I can't understand. Drop the link to detect the phishing site.")
-
-            message = client.messages.create(
-                body=str(resp),
-                from_=twilio_phone_number,
-                to=sender_number
-            )
-
-        user_state[sender_number] = "waiting_for_url"
-
-    elif state == "processing_url":
-        resp = MessagingResponse()
-        resp.message("Please wait while we process your URL.")
-
-        message = client.messages.create(
-            body=str(resp),
-            from_=twilio_phone_number,
-            to=sender_number
-        )'''
+  
 
     return str(message)
 
-if __name__ == '__main__':
-    app.run()
